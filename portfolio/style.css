@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-color: #64ffda;
+    --primary-rgb: 100, 255, 218;
+    --secondary-color: #ccd6f6;
+    --bg-gradient-start: #020c1b;
+    --bg-gradient-end: #0a192f;
+    --glass-bg: rgba(17, 34, 64, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-highlight: rgba(255, 255, 255, 0.05);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-radius: 24px;
+    --text-main: #e6f1ff;
+    --text-muted: #8892b0;
+    --nav-height: 90px;
+}
+
+/* --- Light Theme (Milky White) --- */
+body.light-theme {
+    --primary-color: #007bff;
+    /* Blue for contrast */
+    --primary-rgb: 0, 123, 255;
+    --secondary-color: #333;
+    --bg-gradient-start: #fdfbf7;
+    /* Milky White */
+    --bg-gradient-end: #f4f7f6;
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --glass-highlight: rgba(255, 255, 255, 0.8);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    --text-main: #2c3e50;
+    --text-muted: #555;
+}
+
+/* --- Page Transitions --- */
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    padding-top: var(--nav-height);
+    min-height: 100vh;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    padding-bottom: 250px;
+    /* Layout safety */
+}
+
+/* Canvas Background */
+#canvas-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    filter: blur(1px);
+    opacity: 0.8;
+}
+
+/* --- Top Glass Navbar --- */
+.navbar-glass {
+    background: rgba(10, 25, 47, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    height: var(--nav-height);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin: 0 10px;
+    /* Floating look */
+    width: calc(100% - 20px);
+    top: 10px;
+}
+
+.light-theme .navbar-glass {
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.brand-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+}
+
+.nav-link {
+    color: var(--text-muted) !important;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem !important;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    border-radius: 30px;
+    /* Capsule pills */
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color) !important;
+    background: rgba(100, 255, 218, 0.1);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
+    text-shadow: none;
+}
+
+/* --- Premium Dark Glass Card (Bulby) --- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    /* Highlight top edge */
+    border-radius: var(--glass-radius);
+    padding: 2.5rem;
+    box-shadow: var(--glass-shadow);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.light-theme .glass-card {
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.75);
+}
+
+/* Bulby shine effect overlay */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    border-radius: var(--glass-radius) var(--glass-radius) 0 0;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+    border-color: rgba(100, 255, 218, 0.3);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.profile-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.profile-img-lg {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    filter: grayscale(20%);
+    transition: all 0.5s ease;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+    .navbar-glass {
+        height: auto;
+        padding: 10px 0;
+        background: rgba(10, 25, 47, 0.98);
+        /* Nearly solid background on mobile */
+    }
+
+    .navbar-collapse {
+        background: rgba(2, 12, 27, 0.95);
+        /* distinct background for the menu items */
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid rgba(100, 255, 218, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-link {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 10px 15px !important;
+    }
+
+    body {
+        padding-top: 100px;
+    }
+}
+
+.profile-container::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    border: 1px dashed var(--primary-color);
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hero-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 4rem;
+    color: var(--text-main);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Buttons */
+/* Buttons */
+.btn-glow {
+    background: rgba(100, 255, 218, 0.05);
+    /* Slight fill */
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 12px 30px;
+    border-radius: 50px;
+    /* Full capsule */
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(100, 255, 218, 0.1);
+}
+
+.btn-glow:hover {
+    background: rgba(100, 255, 218, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(100, 255, 218, 0.4);
+    color: var(--primary-color);
+}
+
+.btn-glow:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+    color: var(--primary-color);
+}
+
+.social-icon-btn {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.social-icon-btn:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* --- Typography Overrides --- */
+.section-heading {
+    display: flex;
+    align-items: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.section-heading::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(100, 255, 218, 0.2);
+    margin-left: 20px;
+}
+
+.text-dark {
+    color: var(--text-main) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-primary-custom {
+    color: var(--primary-color) !important;
+}
+
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
+body.light-theme h5,
+body.light-theme h6,
+body.light-theme p,
+body.light-theme span,
+body.light-theme li,
+body.light-theme .text-white,
+body.light-theme .text-light {
+    color: var(--text-main) !important;
+}
+
+body.light-theme .border-light {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Timeline & Badges */
+.experience-card {
+    border-left: 2px solid var(--primary-color);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.exp-year {
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.skill-badge {
+    color: var(--primary-color);
+    font-family: 'Rajdhani', sans-serif;
+    border: 1px solid var(--primary-color);
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+/* Certification Card */
+.cert-card {
+    border: 1px solid #233554;
+    padding: 1.5rem;
+    background: #112240;
+    margin-bottom: 1rem;
+    transition: all 0.2s;
+}
+
+.light-theme .cert-card {
+    background: #fff;
+    border-color: #e1e4e8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(100, 255, 218, 0.3);
+}
+
+/* --- Certificate Gallery Simplified --- */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.cert-item-simple {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius);
+    padding: 0;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.cert-item-simple:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    border-color: var(--primary-color);
+}
+
+.cert-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Reveal on Scroll --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+    margin-left: 15px;
+}
+
+.theme-toggle:hover {
+    transform: rotate(15deg) scale(1.1);
+}

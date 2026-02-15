@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash Sapavadiya | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="canvas-bg"></canvas>
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-glass">
+        <div class="container">
+            <a class="navbar-brand brand-name" href="index.html">Y. Sapavadiya</a>
+
+            <div class="d-flex align-items-center gap-3">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNav">
+                    <i class="fa-solid fa-bars text-primary-custom"></i>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="achievements.html">Achievements</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section reveal">
+        <div class="container">
+            <div class="profile-container">
+                <img src="assets/profile.png" alt="Profile" class="profile-img-lg">
+            </div>
+            <p class="text-primary-custom mb-2 font-monospace">Hi, my name is</p>
+            <h1 class="hero-name">Yash Sapavadiya.</h1>
+            <h2 class="hero-title opacity-75">I build things for the web.</h2>
+
+            <p class="mt-4 mb-5 mx-auto text-muted" style="max-width: 600px; font-size: 1.1rem;">
+                I am an aspiring **Software Architect** specializing in building (and occasionally designing)
+                exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products.
+            </p>
+
+            <div class="d-flex justify-content-center align-items-center gap-4">
+                <!-- Removed Get In Touch Button -->
+                <div class="d-flex gap-4">
+                    <a href="mailto:yashsapavadiya22@gmail.com" class="social-icon-btn"><i
+                            class="fa-solid fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/yashsapavadiya22" target="_blank" class="social-icon-btn"><i
+                            class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="tel:+919106574967" class="social-icon-btn"><i class="fa-solid fa-phone"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+
+                <h2 class="section-heading reveal">About Me</h2>
+
+                <div class="glass-card reveal">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <p>
+                                I am a focused technology professional pursuing an <strong>Integrated Master of Science
+                                    in Information Technology</strong>. My expertise lies in designing high-performance
+                                software architectures and interactive web ecosystems.
+                            </p>
+                            <p class="text-muted">
+                                Beyond code, I define myself by <strong>Leadership and Innovation</strong>. Having
+                                secured a <strong>4th National Rank at IIT Bombay's NEC</strong> and led multiple
+                                incubation projects.
+                            </p>
+                        </div>
+                        <div class="col-lg-5">
+                            <h4 class="h5 text-primary-custom mb-3 font-monospace">Core Competencies</h4>
+                            <ul class="list-unstyled text-muted font-monospace small">
+                                <li class="mb-2"><span class="text-primary-custom">▹</span> Product Development</li>
+                                <li class="mb-2"><span class="text-primary-custom">▹</span> System Architecture</li>
+                                <li class="mb-2"><span class="text-primary-custom">▹</span> Startup Strategy</li>
+                                <li class="mb-2"><span class="text-primary-custom">▹</span> Technical Mentorship</li>
+                            </ul>
+                            <!-- Note: Removed detailed skills list to avoid duplication with Resume page -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

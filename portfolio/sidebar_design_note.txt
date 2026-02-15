@@ -1,0 +1,12 @@
+/* CSS for the updated sidebar styles - this will go into style.css, but just noting the structure change */
+/*
+<aside class="sidebar">
+    ... image ...
+    <div class="contact-links" style="display:flex; justify-content:center; gap: 15px; margin: 15px 0;">
+        <a href="https://www.linkedin.com/in/yashsapavadiya22" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:yashsapavadiya22@gmail.com" class="social-btn"><i class="fa-solid fa-envelope"></i></a>
+        <a href="tel:+919106574967" class="social-btn"><i class="fa-solid fa-phone"></i></a>
+    </div>
+    ...
+</aside>
+*/
